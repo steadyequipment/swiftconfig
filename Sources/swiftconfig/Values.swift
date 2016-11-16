@@ -10,12 +10,6 @@ import Foundation
 
 import SwiftyJSON
 
-// TODO: support flag and bool valuetypes
-// TODO: combine options output and parsing
-// TODO: support --x=y
-// TODO: check for duplicate param names or shorthands
-// TODO: store order variables were added
-// TODO: support parsing config JSON files
 public protocol Values : class {
     var headerName : String { get }
     var headerDescription : String? { get }
@@ -33,7 +27,7 @@ public protocol Values : class {
 public extension Values {
 
     public func add(value : Value, isRequired : Bool = false) /*throws*/ {
-        // TODO: check for duplicate name
+
         self.allValues[value.name] = value
         self.valueOrder.add(value.name)
         if isRequired {
@@ -72,7 +66,6 @@ public extension Values {
         return try self.value(forName: forName).valueAsBool()
     }
 
-    // TODO: think over float->int / int->float / number->?
     public func doubleValue(forName : String) throws -> Double {
 
         return try self.value(forName: forName).valueAsDouble()
