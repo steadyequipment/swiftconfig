@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .Package(url: "https://github.com/onevcat/Rainbow.git", majorVersion: 2, minor: 0),
-        .Package(url: "https://github.com/IBM-Swift/SwiftyJSON.git", majorVersion: 14)
+        .Package(url: "https://github.com/IBM-Swift/SwiftyJSON.git", majorVersion: 15)
     ]
 )
 
