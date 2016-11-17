@@ -20,7 +20,7 @@ public protocol Values : class {
 //    var configFile : String { get }
 
     var allValues : [String : Value] { get set }
-    var valueOrder : NSMutableOrderedSet { get set }
+    var valueOrder : [String] { get set } // Linux doesn't support NSMutableOrderedSet
     var requiredValues : [String] { get set }
 }
 
@@ -29,7 +29,7 @@ public extension Values {
     public func add(value : Value, isRequired : Bool = false) /*throws*/ {
 
         self.allValues[value.name] = value
-        self.valueOrder.add(value.name)
+        self.valueOrder.append(value.name)
         if isRequired {
             self.requiredValues.append(value.name)
         }
@@ -120,11 +120,8 @@ public extension Values {
 
         let longestValueNameLength = self.getLongestValueNameLength()
 
-        for valueName in self.valueOrder.array {
+        for valueName in self.valueOrder {
 
-            guard let valueName = valueName as? String else {
-                continue
-            }
             guard let value = self.allValues[valueName] else {
                 continue
             }

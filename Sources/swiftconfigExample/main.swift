@@ -22,7 +22,7 @@ struct Config {
         var footerDescription : String? = nil
 
         var allValues = [String : Value]()
-        var valueOrder = NSMutableOrderedSet()
+        var valueOrder = [String]()
         var requiredValues = [String]()
 
         init() {
